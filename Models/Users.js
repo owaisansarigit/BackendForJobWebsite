@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  experience: {
+    type: Number,
+    required: false,
+  },
 });
 
 userSchema.plugin(passportLocalMongoose);
