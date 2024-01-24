@@ -20,17 +20,14 @@ main()
   });
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/jobwebsite", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  await mongoose.connect("mongodb://127.0.0.1:27017/jobwebsite", {});
 }
 
 app.use(express.json());
 app.use(cors());
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "mysecret", 
+    secret: process.env.SESSION_SECRET || "mysecret",
     resave: false,
     saveUninitialized: true,
   })
@@ -38,8 +35,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
